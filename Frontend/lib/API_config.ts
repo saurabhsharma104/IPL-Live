@@ -7,5 +7,5 @@ export const API_ENDPOINT={
     teamData:"/team",
     teamMatches:"/team",
     pointTable:"/points-table",
-    stats:"/stats/mostWickets"
+    stats:"/stats"
 }

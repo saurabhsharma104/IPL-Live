@@ -1,7 +1,6 @@
 import { API_ENDPOINT, BASE_URL } from "@/lib/API_config";
 import { DataTable } from "../table/data-table";
-import { columns} from "../table/stat-column";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import {
   Select,
@@ -11,38 +10,55 @@ import {
   SelectValue,} from "@/components/ui/select"
 import { StatsData } from "@/lib/utils";
 
+function addSpaceBeforeCapitals(str) {
+  return str.replace(/([A-Z])/g, ' $1').trim();
+}
+
 
 const StatsTab=({activeTab})=>{
 
-    const [statsTableData,setStatsTableData] = useState([])
-    const selectedStats = "mostRuns";
+    const [statsTableData,setStatsTableData] = useState({})
+    const [selectedStats,setSelectedStats] = useState("mostRuns")
 
 
-    const callStatsTableApi=async()=>{
-      let res = await fetch(`${BASE_URL}${API_ENDPOINT.stats}`,)
-        .then((res)=>{
-          if(!res.ok){
-            throw new Error("Not able to find match list")
-          }
-          return res.json()
-        })
-        .then((res)=>{
-          console.log(res);
-        }).catch((error)=>{
-          console.log("Fetching",error)
-        })
-    }
+    const callStatsTableApi=async(val)=>{
+
+      let response = await fetch(`${BASE_URL}${API_ENDPOINT.stats}/${val}`, { 
+        method: "GET",
+      });
+
+      let data = await response.json();
+      setStatsTableData(data?.t20StatsList)
+     }
   
     useEffect(()=>{
       if(activeTab === "Stats"){
-        callStatsTableApi()
+        callStatsTableApi("mostRuns")
       }
     },[activeTab])
 
     const handleYearChange=(e)=>{
-      // setSelectedYear(e)
-      // TeamDataYearWise(e)
+      callStatsTableApi(e)
+      setSelectedStats(e)
   }
+
+
+  const columns = useMemo(() => statsTableData?.headers?.map(header => ({
+    header: header,
+    accessorKey: header.toLowerCase().replace(/ /g, '_'),
+    id:header
+  })), [statsTableData]);
+
+  
+
+  const data = useMemo(() => statsTableData?.values?.map(item => {
+    const obj= {};
+    statsTableData.headers.forEach((header, index) => {
+      obj[header.toLowerCase().replace(/ /g, '_')] = item.values[index+1];
+    });
+    return obj;
+  }), [statsTableData?.values, statsTableData?.headers]);
+
 
     
 
@@ -61,16 +77,9 @@ const StatsTab=({activeTab})=>{
                         })}
                     </SelectContent>
                   </Select>
-                {/* <span className="text-lg text-white">Top Runner</span>
-                <DataTable columns={columns} data={data} /> */}
-                <div className="text-xl bg-white h-36 flex justify-center items-center">
-                    We are working on It
-                </div>
+                <span className="text-lg text-white capitalize">{addSpaceBeforeCapitals(selectedStats)}</span>
+                {Object.keys(statsTableData).length!=0 &&<DataTable columns={columns} data={data} />}
             </div>
-            {/* <div className="max-w-2xl mx-auto py-6">
-                <span className="text-lg text-white">Top Wicket Taker</span>
-                <DataTable columns={columns} data={data} />
-            </div> */}
         </>
     )
 }
