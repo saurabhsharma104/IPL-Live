@@ -5,23 +5,15 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import project.ipl_dashboard.config.APIConfig;
 import project.ipl_dashboard.enums.StatsEnum;
-import project.ipl_dashboard.service.LiveStatsService;
 
 @RestController
 public class LiveStatsController { 
-    
-    
-     @Autowired
-    private LiveStatsService liveStatsService;
 
     @GetMapping("/stats/{statsType}")
     public String getStats(@PathVariable String statsType) {
