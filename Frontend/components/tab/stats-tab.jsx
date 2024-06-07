@@ -59,29 +59,26 @@ const StatsTab=({activeTab})=>{
     return obj;
   }), [statsTableData?.values, statsTableData?.headers]);
 
-
-    
-
-    return(
-        <>
-            <div className="max-w-2xl mx-auto mt-20">
-                  <Select value={selectedStats} onValueChange={handleYearChange}>
-                    <SelectTrigger className="w-[180px] mb-3 mt-2 mr-2">
-                        <SelectValue placeholder="Year" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {StatsData.map((stats)=>{
-                            return(
-                                <SelectItem key={stats.value} value={stats.value}>{stats.name}</SelectItem>
-                            )
-                        })}
-                    </SelectContent>
-                  </Select>
-                <span className="text-lg text-white capitalize">{addSpaceBeforeCapitals(selectedStats)}</span>
-                {Object.keys(statsTableData).length!=0 &&<DataTable columns={columns} data={data} />}
-            </div>
-        </>
-    )
+  return(
+      <>
+        <div className="max-w-2xl mx-auto mt-20">
+          <Select value={selectedStats} onValueChange={handleYearChange}>
+            <SelectTrigger className="w-[180px] mb-3 mt-2 mr-2">
+                <SelectValue placeholder="Year" />
+            </SelectTrigger>
+            <SelectContent>
+                {StatsData.map((stats)=>{
+                    return(
+                        <SelectItem key={stats.value} value={stats.value}>{stats.name}</SelectItem>
+                    )
+                })}
+            </SelectContent>
+          </Select>
+          <span className="text-lg text-white capitalize">{addSpaceBeforeCapitals(selectedStats)}</span>
+          {statsTableData!=undefined && Object?.keys(statsTableData).length!=0 &&<DataTable columns={columns} data={data} />}
+        </div>
+      </>
+  )
 }
 
 export default StatsTab

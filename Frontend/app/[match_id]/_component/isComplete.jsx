@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { MoveLeft, MoveRight } from "lucide-react";
 import { memo } from "react";
+import Link from "next/link";
 
 const IsMatchComplete = ({ data }) => {
   if (!data?.scoreCard) return null;
@@ -59,11 +60,13 @@ const IsMatchComplete = ({ data }) => {
       <TableRow key={batsman.batName}>
         <TableCell>
           <div className="font-medium flex items-center gap-1">
+          <a target="_blank" href={`https://en.wikipedia.org/wiki/${batsman.batName}`}>
             {batsman.batName}
             {batsman.isCaptain && "(C)"}
             {batsman.isKeeper && "(Wk)"}
             {batsman.inMatchChange === "MOUT" && <MoveRight className="text-green-500 h-3 w-3" />}
             {batsman.inMatchChange === "MIN" && <MoveLeft className="h-3 w-3" color="red" />}
+          </a>
           </div>
           <p className="text-xs">{batsman.outDesc}</p>
         </TableCell>
@@ -81,11 +84,13 @@ const IsMatchComplete = ({ data }) => {
       <TableRow key={bowl.bowlName}>
         <TableCell>
           <div className="font-medium flex items-center gap-1 w-72">
+          <a target="_blank" href={`https://en.wikipedia.org/wiki/${bowl.bowlName}`}>
             {bowl.bowlName}
             {bowl.isCaptain && "(C)"}
             {bowl.isKeeper && "(Wk)"}
             {bowl.inMatchChange === "MOUT" && <MoveRight className="text-green-500 h-3 w-3" />}
             {bowl.inMatchChange === "MIN" && <MoveLeft className="h-3 w-3" color="red" />}
+          </a>
           </div>
           <p className="text-xs">{bowl.outDesc}</p>
         </TableCell>

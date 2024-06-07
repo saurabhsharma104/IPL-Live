@@ -5,6 +5,7 @@ import { API_ENDPOINT, BASE_URL } from "@/lib/API_config";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import PreviewMatch from './../preview';
+import { Skeleton } from "../ui/skeleton";
 
 const MatchCard = ({ match, length }:{match:any,length:number}) => {
   const matchInfo = match?.match[0]?.matchInfo;
@@ -16,7 +17,7 @@ const MatchCard = ({ match, length }:{match:any,length:number}) => {
   };
 
   return (
-    <Card className="">
+    <Card className="card-container">
       <Link href={`/${matchInfo.matchId}`}>
         <div className='hover:bg-gray-200'>
           <div className="flex justify-between px-5 text-xs p-2">
@@ -60,8 +61,10 @@ const MatchCard = ({ match, length }:{match:any,length:number}) => {
 const MatchesTab=({activeTab}:{activeTab:string})=>{
   const [matchList,setMatchList] = useState<any[]>([])
   const [previewList,setPreviewList] = useState<any[]>([])
+  const [loader,setLoader] = useState<Boolean>(false)
 
   const callMatchListApi=async()=>{
+   setLoader(true)
    await fetch(`${BASE_URL}${API_ENDPOINT.matchList}`,)
     .then((res)=>{
       if(!res.ok){
@@ -97,6 +100,7 @@ const MatchesTab=({activeTab}:{activeTab:string})=>{
       setMatchList([])
       console.log("Fetching",error)
     })
+    setLoader(false)
   }
 
   useEffect(()=>{
@@ -105,7 +109,7 @@ const MatchesTab=({activeTab}:{activeTab:string})=>{
     }
   },[activeTab])
 
-  console.log("Fetching",previewList)
+  // console.log("Fetching",previewList)
 
 
   return(
@@ -116,11 +120,19 @@ const MatchesTab=({activeTab}:{activeTab:string})=>{
         }
       </div>
       <div className="grid grid-cols-2 grid-rows-1 gap-4">
-        {matchList.reverse().map((match,matchInx)=>{
+        {loader ? [1,2,3,4,5,6,7,8,9,10,11,12].map((i)=>{
           return(
-            <MatchCard key={matchInx} match={match} length={matchList.length}/>
+            <Skeleton key={i} className="w-full h-[100px] rounded-sm" />
           )
-        })}
+        }):
+        <>
+          {matchList.reverse().map((match,matchInx)=>{
+            return(
+              <MatchCard key={matchInx} match={match} length={matchList.length}/>
+            )
+          })}
+        </>
+      }
       </div>
     </div>
   )
