@@ -16,7 +16,7 @@ const IsMatchLive=({data})=>{
 
     return(
         <>
-        <div className="container p-1 max-w-2xl mt-1">
+        <div className="p-3 mt-5">
             <Card className="mt-2">
                 <div className="flex justify-between p-5">
                     <div>IPL</div>

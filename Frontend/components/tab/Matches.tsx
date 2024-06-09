@@ -18,8 +18,8 @@ const MatchCard = ({ match, length }:{match:any,length:number}) => {
 
   return (
     <Card className="card-container">
-      <Link href={`/${matchInfo.matchId}`}>
-        <div className='hover:bg-gray-200'>
+      <Link href={`/match/${matchInfo.matchId}`}>
+        <div className='hover:bg-gray-200 hover:dark:text-black'>
           <div className="flex justify-between px-5 text-xs p-2">
             <div>{`${matchInfo?.matchDesc?.replace("Match", "")} of ${length}`}</div>
             <div>{match.key}</div>
@@ -58,7 +58,7 @@ const MatchCard = ({ match, length }:{match:any,length:number}) => {
   );
 };
 
-const MatchesTab=({activeTab}:{activeTab:string})=>{
+const MatchesTab=()=>{
   const [matchList,setMatchList] = useState<any[]>([])
   const [previewList,setPreviewList] = useState<any[]>([])
   const [loader,setLoader] = useState<Boolean>(false)
@@ -104,16 +104,12 @@ const MatchesTab=({activeTab}:{activeTab:string})=>{
   }
 
   useEffect(()=>{
-    if(activeTab=="Matches"){
-      callMatchListApi()
-    }
-  },[activeTab])
-
-  // console.log("Fetching",previewList)
+    callMatchListApi() 
+  },[])
 
 
   return(
-    <div className="container p-1 max-w-2xl mt-16">
+    <div className="w-fill p-3 mt-4">
       <div className="mb-4">
         {previewList.length!==0 && 
           <PreviewMatch data={previewList}/>

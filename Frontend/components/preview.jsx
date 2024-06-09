@@ -13,13 +13,13 @@ const PreviewMatch=({data})=>{
     console.log("data[0]?.match[0]?.matchScore?.team1Score.inngs1.runs")
     return(isClient &&
         <>
-        <Link href={`/${data[0]?.match[0]?.matchInfo?.matchId}`}>
+        <Link href={`/match/${data[0]?.match[0]?.matchInfo?.matchId}`}>
           <Card>
             {/* <div className="h-[200px]">sadasd</div> */}
             <div className="flex justify-between p-5">
               <div className="text-sm">IPL({data[0]?.match[0]?.matchInfo?.matchDesc})</div>
               <div>
-                {data[0]?.match[0].matchInfo.state =="In Progress" ? <><div className="text-xs">Live</div>
+                {data[0]?.match[0].matchInfo.state =="In Progress" ? <><div className="text-xs">Preview</div>
                 <div className="item">
                   <i className="loader --1"></i>
                 </div></> : <>

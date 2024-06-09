@@ -5,7 +5,7 @@ import { CircleCheck, CircleMinus, CircleX } from "lucide-react"
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function TableTab({activeTab}) {
+export default function TableTab() {
   const [pointTableData,setPointTableData] = useState([])
 
   const callPointTableApi=async()=>{
@@ -25,10 +25,8 @@ export default function TableTab({activeTab}) {
    }
 
   useEffect(()=>{
-    if(activeTab === "Table"){
       callPointTableApi()
-    }
-  },[activeTab])
+  },[])
 
 
   const columns= [
@@ -113,7 +111,7 @@ export default function TableTab({activeTab}) {
 
   return(
       <>
-        <div className="max-w-2xl mx-auto mt-20">
+        <div className="p-3 mx-auto mt-10">
           <DataTable columns={columns} data={pointTableData} />
         </div>
       </>

@@ -108,7 +108,7 @@ const IsInProgress = ({ data }) => {
   };
 
   const renderTableContent = (team) => (
-    <Table style={{ background: "white" }}>
+    <Table>
       <TableHeader>
         <TableRow>
           <TableHead>Batting</TableHead>
@@ -176,7 +176,7 @@ const IsInProgress = ({ data }) => {
   }
 
   const renderbowlTableContent = (team) => (
-    <Table className="" style={{ background: "white",}}>
+    <Table>
       <TableHeader>
         <TableRow>
           <TableHead >Bowling</TableHead>
@@ -196,7 +196,7 @@ const IsInProgress = ({ data }) => {
   );
 
   return (
-    <div className="container p-1 max-w-2xl mt-1">
+    <div className="p-2 mt-10">
       <Card className="mt-5 mb-5">
         <div className="flex justify-between p-5">
             <div>IPL</div>
