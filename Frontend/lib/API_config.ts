@@ -7,5 +7,6 @@ export const API_ENDPOINT={
     teamData:"/team",
     teamMatches:"/team",
     pointTable:"/points-table",
-    stats:"/stats"
+    stats:"/stats",
+    previewMatch:"/preview-match-id"
 }

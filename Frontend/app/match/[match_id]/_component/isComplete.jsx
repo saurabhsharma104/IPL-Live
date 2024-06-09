@@ -60,7 +60,7 @@ const IsMatchComplete = ({ data }) => {
       <TableRow key={batsman.batName}>
         <TableCell>
           <div className="font-medium flex items-center gap-1">
-          <a target="_blank" href={`https://en.wikipedia.org/wiki/${batsman.batName}`}>
+          <a className="flex items-center gap-1" target="_blank" href={`https://en.wikipedia.org/wiki/${batsman.batName}`}>
             {batsman.batName}
             {batsman.isCaptain && "(C)"}
             {batsman.isKeeper && "(Wk)"}
@@ -84,7 +84,7 @@ const IsMatchComplete = ({ data }) => {
       <TableRow key={bowl.bowlName}>
         <TableCell>
           <div className="font-medium flex items-center gap-1 w-72">
-          <a target="_blank" href={`https://en.wikipedia.org/wiki/${bowl.bowlName}`}>
+          <a target="_blank" className="flex items-center gap-1" href={`https://en.wikipedia.org/wiki/${bowl.bowlName}`}>
             {bowl.bowlName}
             {bowl.isCaptain && "(C)"}
             {bowl.isKeeper && "(Wk)"}
@@ -104,7 +104,7 @@ const IsMatchComplete = ({ data }) => {
   };
 
   const renderTableContent = (team) => (
-    <Table style={{ background: "white" }}>
+    <Table>
       <TableHeader>
         <TableRow>
           <TableHead>Batting</TableHead>
@@ -116,7 +116,7 @@ const IsMatchComplete = ({ data }) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {Object.values(team?.batTeamDetails?.batsmenData).map((batsman) => (
+        {Object?.values(team?.batTeamDetails?.batsmenData).map((batsman) => (
           <BatsmanRow key={batsman?.batName} batsman={batsman} />
         ))}
         <ExtrasRow extras={team?.extrasData} />
@@ -127,7 +127,7 @@ const IsMatchComplete = ({ data }) => {
 
   const Info=()=>{
     return(
-      <div className="p-2" style={{background:"white"}}>
+      <div className="p-2">
         <Card className="rounded-md">
           <CardHeader className="p-4">
             <CardTitle className="text-sm">Key</CardTitle>
@@ -172,7 +172,7 @@ const IsMatchComplete = ({ data }) => {
   }
 
   const renderbowlTableContent = (team) => (
-    <Table className="mt-5" style={{ background: "white",}}>
+    <Table className="mt-5">
       <TableHeader>
         <TableRow>
           <TableHead >Bowling</TableHead>
@@ -184,7 +184,7 @@ const IsMatchComplete = ({ data }) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {Object.values(team?.bowlTeamDetails?.bowlersData).map((bowl) => (
+        {Object?.values(team?.bowlTeamDetails?.bowlersData).map((bowl) => (
           <BowlermanRow key={bowl?.bowlName} bowl={bowl} />
         ))}
       </TableBody>
@@ -192,7 +192,7 @@ const IsMatchComplete = ({ data }) => {
   );
 
   return (
-    <div className="container p-1 max-w-2xl mt-1">
+    <div className="container p-3 mt-5">
       <Card className="mt-5 mb-5">
         <div className="flex justify-between p-5">
           <div>IPL</div>

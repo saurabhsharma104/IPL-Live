@@ -1,3 +1,4 @@
+"use client"
 import { API_ENDPOINT, BASE_URL } from "@/lib/API_config";
 import { DataTable } from "../table/data-table";
 import { useEffect, useMemo, useState } from "react";
@@ -15,14 +16,12 @@ function addSpaceBeforeCapitals(str) {
 }
 
 
-const StatsTab=({activeTab})=>{
+const StatsTab=()=>{
 
     const [statsTableData,setStatsTableData] = useState({})
     const [selectedStats,setSelectedStats] = useState("mostRuns")
 
-
     const callStatsTableApi=async(val)=>{
-
       let response = await fetch(`${BASE_URL}${API_ENDPOINT.stats}/${val}`, { 
         method: "GET",
       });
@@ -32,24 +31,19 @@ const StatsTab=({activeTab})=>{
      }
   
     useEffect(()=>{
-      if(activeTab === "Stats"){
         callStatsTableApi("mostRuns")
-      }
-    },[activeTab])
+    },[])
 
     const handleYearChange=(e)=>{
       callStatsTableApi(e)
       setSelectedStats(e)
   }
 
-
   const columns = useMemo(() => statsTableData?.headers?.map(header => ({
     header: header,
     accessorKey: header.toLowerCase().replace(/ /g, '_'),
     id:header
   })), [statsTableData]);
-
-  
 
   const data = useMemo(() => statsTableData?.values?.map(item => {
     const obj= {};
@@ -61,7 +55,7 @@ const StatsTab=({activeTab})=>{
 
   return(
       <>
-        <div className="max-w-2xl mx-auto mt-20">
+        <div className="p-3 mx-auto mt-10">
           <Select value={selectedStats} onValueChange={handleYearChange}>
             <SelectTrigger className="w-[180px] mb-3 mt-2 mr-2">
                 <SelectValue placeholder="Year" />
@@ -74,7 +68,7 @@ const StatsTab=({activeTab})=>{
                 })}
             </SelectContent>
           </Select>
-          <span className="text-lg text-white capitalize">{addSpaceBeforeCapitals(selectedStats)}</span>
+          <span className="text-lg text-black dark:text-white capitalize">{addSpaceBeforeCapitals(selectedStats)}</span>
           {statsTableData!=undefined && Object?.keys(statsTableData).length!=0 &&<DataTable columns={columns} data={data} />}
         </div>
       </>

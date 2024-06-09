@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google"
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Navigation } from "@/components/navigation";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -20,8 +22,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("min-h-screen bg-[#2e2c2c] font-sans antialiased",fontSans.variable)}>
-        {children}
+      <body>
+      <ThemeProvider 
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+          storageKey='ipll-app'> 
+          <div className="flex dark:bg-[#1F1F1F] h-screen">
+            <Navigation/>
+            <main className="flex-1 overflow-y-auto">
+                {children}
+            </main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

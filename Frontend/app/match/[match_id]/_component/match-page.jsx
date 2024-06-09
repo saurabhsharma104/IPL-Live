@@ -9,16 +9,18 @@ import IsMatchComplete from "./isComplete";
 import IsInProgress from "./isInProgress";
 
 export default function MatchPage({ id }) {
-  const router = useRouter();
+  const [loading,setLoading] = useState(false)
   const [matchDetails, setMatchDetails] = useState({});
 
   const fetchMatchDetails = useCallback(async () => {
+    setLoading(true)
     try {
       const response = await fetch(`${BASE_URL}${API_ENDPOINT.matchDetails}/${id}`, { cache: "no-cache" });
       if (!response.ok) {
         throw new Error("Not able to find match list");
       }
       const data = await response.json();
+      setLoading(false)
       setMatchDetails(data);
     } catch (error) {
       setMatchDetails({});
@@ -39,10 +41,7 @@ export default function MatchPage({ id }) {
 
   return (
     <>
-      <div className={cn("z-50 bg-[#2c3673] h-10 fixed top-0 flex items-center justify-start text-gray-500 border-gray-200 dark:text-gray-400 dark:border-gray-700 w-full")}>
-        <MoveLeft className="w-10 h-7 text-start text-whiite cursor-pointer" onClick={() => router.back()} />
-        <span className="text-sm text-white">Indian Premier League</span>
-      </div>
+    {loading ? null :<>
       {Object.keys(matchDetails).length === 0 ? (
         <>Something Got Unexpected!</>
       ) : (
@@ -56,6 +55,7 @@ export default function MatchPage({ id }) {
           )}
         </>
       )}
+    </>}
     </>
   );
 }
