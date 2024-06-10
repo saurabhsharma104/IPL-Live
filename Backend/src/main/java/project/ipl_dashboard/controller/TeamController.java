@@ -72,8 +72,13 @@ public class TeamController {
         int highestScore = 0;
         int lowestScore = HIGHEST_SCORE; 
         for (Match match : matches) {
-            highestScore = Math.max(highestScore, Integer.parseInt(match.getEliminator()));
-            lowestScore = Math.min(lowestScore, Integer.parseInt(match.getEliminator()));
+            if (teamName.equalsIgnoreCase(match.getMatchWinner())) {
+                highestScore = Math.max(highestScore, Integer.parseInt(match.getEliminator()));
+                lowestScore = Math.min(lowestScore, Integer.parseInt(match.getEliminator()));
+            } else {
+                highestScore = Math.max(highestScore, Integer.parseInt(match.getEliminator()) - Integer.parseInt(match.getResultMargin()));
+                lowestScore = Math.min(lowestScore, Integer.parseInt(match.getEliminator())- Integer.parseInt(match.getResultMargin()));
+            }
 
             if (teamName.equalsIgnoreCase(match.getMatchWinner())) {
                 win++;
