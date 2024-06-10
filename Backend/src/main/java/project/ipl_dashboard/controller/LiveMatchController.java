@@ -59,22 +59,7 @@ public class LiveMatchController {
 
     @GetMapping("/preview-match-id")
     public String getPreviewMatch() {
-
-        // if (matchList == null) {
-        //     try {
-        //         HttpRequest request = HttpRequest.newBuilder()
-        //                 .uri(URI.create(APIConfig.BASE_URL + "/series/v1/"+APIConfig.SERIES_ID))
-        //                 .header("X-RapidAPI-Key", APIConfig.API_KEY)
-        //                 .header("X-RapidAPI-Host", APIConfig.HOST_NAME)
-        //                 .method("GET", HttpRequest.BodyPublishers.noBody())
-        //                 .build();
-        //         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-        //         matchList = response.body();
-        //     } catch (Exception e) {
-        //         e.printStackTrace();
-        //     } 
-        // }
-
+        System.out.println("We are in the preview match id...controler....");
         return "91740";
     }
 

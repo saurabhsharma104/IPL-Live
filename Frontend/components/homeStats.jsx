@@ -16,16 +16,14 @@ const HomeStats=({data})=>{
     return(
         <div className="!dark:bg-[#aaaaaa] rounded-md border">
            <img src="/virat_kohli.png"/> 
-            <div className="grid grid-cols-2 grid-rows-1 gap-2 mt-4">
+           <br/>
+            <div className="">
                 <div >
-                    <p className="text-lg text-center text-muted-foreground">Name</p>
-                </div>
-                <div >
-                    <p className="text-lg text-muted-foreground font-semibold">Virat Kohli</p>
+                    <p className="text-lg text-center text-muted-foreground">Virat Kohli</p>
                 </div>
             </div>
            
-            <div className="grid grid-cols-2 grid-rows-1 gap-2 mt-2">
+            {/* <div className="grid grid-cols-2 grid-rows-1 gap-2 mt-2">
                 <div >
                     <p className="text-lg text-muted-foreground text-center">DOB</p>
                 </div>
@@ -41,7 +39,7 @@ const HomeStats=({data})=>{
                 <div >
                     <p className="text-lg text-muted-foreground font-semibold">Middle Order Batter</p>
                 </div>
-            </div>
+            </div> */}
 
            <div className="flex justify-center gap-10 mt-5">
                 <div className="text-lg text-muted-foreground">
@@ -60,7 +58,7 @@ const HomeStats=({data})=>{
                 
            </div>
 
-           <div className="grid grid-cols-2 grid-rows-1 gap-2 mt-4">
+           {/* <div className="grid grid-cols-2 grid-rows-1 gap-2 mt-4">
                 <div >
                     <p className="text-lg text-end text-muted-foreground">Betting Style</p>
                 </div>
@@ -76,8 +74,8 @@ const HomeStats=({data})=>{
                 <div >
                     <p className="text-lg text-center text-muted-foreground font-semibold">Right-arm</p>
                 </div>
-            </div>
-
+            </div> */}
+            <br/>
             <div className="text-center pb-4">
                 <Button variant="outline" onClick={handleGoToStats} className="border-2 border-blue-500"> 
                     <TrendingUp className="h-4 w-4 mr-4"/>

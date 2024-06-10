@@ -17,9 +17,31 @@ public class Team {
     private String teamName;
     private long totalMatches;
     private long totalWins;
-    
+    private int highestScore;
+    private int lowestScore;
+    private int winProb;
+
     @Transient
     private List<Match> matches;
+    
+    public int getHighestScore() {
+        return highestScore;
+    }
+    public void setHighestScore(int highestScore) {
+        this.highestScore = highestScore;
+    }
+    public int getLowestScore() {
+        return lowestScore;
+    }
+    public void setLowestScore(int lowestScore) {
+        this.lowestScore = lowestScore;
+    }
+    public int getWinProb() {
+        return winProb;
+    }
+    public void setWinProb(int winProb) {
+        this.winProb = winProb;
+    }
 
     public long getId() {
         return id;

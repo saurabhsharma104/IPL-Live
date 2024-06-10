@@ -21,9 +21,16 @@ public class Match {
     private String matchWinner;
     private String result;
     private String resultMargin;
+    private String eliminator;
     private String umpire1;
     private String umpire2;
 
+    public String getEliminator() {
+        return eliminator;
+    }
+    public void setEliminator(String eliminator) {
+        this.eliminator = eliminator;
+    }
     public long getId() {
         return id;
     }
