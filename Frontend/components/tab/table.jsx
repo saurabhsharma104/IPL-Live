@@ -92,7 +92,13 @@ export default function TableTab() {
     
     {
       accessorKey: "lastFive",
-      header: "Last 5",
+      header:()=>{
+        return(
+          <div className="ml-5">
+            Last 5
+          </div>
+        )
+      },
       cell: ({ row }) => {
           const data=row.original?.form
           return(
