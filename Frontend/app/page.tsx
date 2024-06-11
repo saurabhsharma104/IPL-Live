@@ -56,10 +56,11 @@ export default function Home() {
             {Array.from({ length: 1 }).map((_, index) => (
               <CarouselItem key={index}>
                 <div>
-                  <Card className="border-none">
-                    <Link href={`/match/${Id}`}>
-                      <img alt="final_match" src="/final_match.jpeg"  className="h-[500px] w-full rounded-md flex aspect-square items-center justify-center"/>
-                    </Link>
+                  <Card className="border-none relative">
+                      <img alt="final_match" src="/final_match.jpeg"  className="h-[514px] w-full rounded-md flex aspect-square items-center justify-center"/>
+                      <Link href={`/match/${Id}`} className="absolute top-[80%] left-[40%] p-2 bg-black text-white text-lg rounded-md">
+                        Watch Now!
+                      </Link>
                   </Card>
                 </div>
               </CarouselItem>
