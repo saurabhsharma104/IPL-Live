@@ -38,7 +38,7 @@ export const Navigation = () => {
 
         <div className="mt-2 ml-10">
           <Item icon={Home} label="Home" onClick={()=>handleSideBar("/")} active={pathname=="/" ? true:false}/>
-          <Item icon={ShieldHalf} label="Team" onClick={()=>handleSideBar("table")} active={pathname.includes("/team") ? true:false}/>
+          <Item icon={ShieldHalf} label="Team" onClick={()=>handleSideBar("team-dashboard")} active={pathname=="/team-dashboard" ? true:false}/>
           <Item icon={Grid3X3} label="Matchs" onClick={()=>handleSideBar("match")} active={pathname=="/match" ? true:false}/>
           <Item icon={Grid3X3} label="Table" onClick={()=>handleSideBar("table")} active={pathname=="/table" ? true:false}/>
           <Item icon={BarChart} label="Stats" onClick={()=>handleSideBar("Stats")} active={pathname=="/Stats" ? true:false}/>

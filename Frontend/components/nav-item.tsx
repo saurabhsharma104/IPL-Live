@@ -18,8 +18,8 @@ export const Item = ({
 
     return (
         <div className="flex items-center">
-            {active && 
-            <ChevronsRight className=" h-4 w-4 text-blue-600 flex items-center mt-1" />}
+            {/* {active && 
+            <ChevronsRight className=" h-4 w-4 text-blue-600 flex items-center mt-1" />} */}
             <div 
             onClick={onClick} 
             role="button"
