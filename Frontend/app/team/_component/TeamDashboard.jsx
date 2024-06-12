@@ -134,7 +134,7 @@ const TeamDash=({name})=>{
     return(
         <>
         {Object.keys(teamData).length==0 ? null : 
-            <div className="container p-1 max-w-2xl">
+            <div className="p-4">
                 <Card className="mt-5 mb-5 rounded-md bg-blue-100">
                     <div className="flex justify-between p-5">
                         <div>Indian Premier League</div>

@@ -24,6 +24,7 @@ const StatsTab=()=>{
     const callStatsTableApi=async(val)=>{
       let response = await fetch(`${BASE_URL}${API_ENDPOINT.stats}/${val}`, { 
         method: "GET",
+        cache:"no-cache"
       });
 
       let data = await response.json();

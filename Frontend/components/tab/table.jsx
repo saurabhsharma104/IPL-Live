@@ -36,7 +36,7 @@ export default function TableTab() {
       cell: ({ row }) => {
         const data=row.original
     
-        return <div className="font-medium"><Link href={`/team/${data?.teamFullName}`}>{data?.teamFullName}</Link></div>
+        return <div className="font-medium">{data?.teamFullName}</div>
       },
     },
 

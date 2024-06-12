@@ -15,7 +15,9 @@ const HomeStats=({data})=>{
 
     return(
         <div className="!dark:bg-[#aaaaaa] rounded-md border">
-           <img src="/virat_kohli.png"/> 
+            <div className="flex justify-center">
+                <img src="/virat_kohli.png" className="h-[300px] w-[300px]"/> 
+            </div>
            <br/>
             <div className="">
                 <div >
@@ -44,15 +46,15 @@ const HomeStats=({data})=>{
            <div className="flex justify-center gap-10 mt-5">
                 <div className="text-lg text-muted-foreground">
                     <p>Matches</p>
-                    <p className="text-center text-2xl font-mono text-white font-semibold">{FirtsData?.values[2]}</p>
+                    <p className="text-center text-2xl font-mono dark:text-white font-semibold">{FirtsData?.values[2]}</p>
                 </div>
                 <div className="text-lg text-muted-foreground">
                     <p>Runs</p>
-                    <p className="text-center text-2xl font-mono text-white font-semibold">{FirtsData?.values[4]}</p>
+                    <p className="text-center text-2xl font-mono dark:text-white font-semibold">{FirtsData?.values[4]}</p>
                 </div>
                 <div className="text-lg text-muted-foreground">
                     <p>Avg.</p>
-                    <p className="text-center text-2xl font-mono text-white font-semibold">{FirtsData?.values[5]}</p>
+                    <p className="text-center text-2xl font-mono dark:text-white font-semibold">{FirtsData?.values[5]}</p>
                 </div>
 
                 
@@ -79,7 +81,7 @@ const HomeStats=({data})=>{
             <div className="text-center pb-4">
                 <Button variant="outline" onClick={handleGoToStats} className="border-2 border-blue-500"> 
                     <TrendingUp className="h-4 w-4 mr-4"/>
-                    <span>See Stats</span>
+                    <span className="mr-2">See Stats</span>
                 </Button>
             </div>
         </div>
